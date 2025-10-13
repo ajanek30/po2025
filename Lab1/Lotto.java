@@ -17,6 +17,7 @@ public class Lotto
             do
             {
                 num = min + (int)(Math.random() * ((max-min) + 1));
+                tablicaLiczb[i] = num;
 
 
 
