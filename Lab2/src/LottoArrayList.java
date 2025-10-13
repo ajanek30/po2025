@@ -1,29 +1,68 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class LottoArrayList
 {
     private static final int MIN = 1;
     private static final int MAX = 49;
-    protected ArrayList<Integer> tab = new ArrayList<>();
+    Scanner scanner = new Scanner(System.in);
+    private int elementyWTablicy;
+    protected int liczbaTrafien = 0;
+    protected ArrayList<Integer> wylosowaneLiczby = new ArrayList<>();
+    protected ArrayList<Integer> wpisaneLiczby = new ArrayList<>();
 
 
-    public ArrayList<Integer> wylosuj()
+    public void wpiszLiczby()
     {
-        tab.clear();
+        elementyWTablicy = 0;
+
         for(int i = 0 ; i < 6 ; i++)
         {
-            int num = (MIN +  (int)(Math.random() * ((MAX-MIN) + 1)));
-            if(!tab.contains(num))
+            if(scanner.hasNextInt())
             {
-                tab.add(num);
+                wpisaneLiczby.add(scanner.nextInt());
+                elementyWTablicy++;
+            }
+            else if(elementyWTablicy == 6)
+            {
+                break;
             }
         }
-        return tab;
-    }
-    public void wyswietl(ArrayList<Integer> tablica)
-    {
-        System.out.println(tablica);
+        System.out.println(wpisaneLiczby);
 
     }
+
+    public void wylosuj()
+    {
+        elementyWTablicy = 0;
+        wylosowaneLiczby.trimToSize();
+        wylosowaneLiczby.clear();
+        while(elementyWTablicy < 6)
+        {
+            int num = (MIN +  (int)(Math.random() * ((MAX-MIN) + 1)));
+            if(!wylosowaneLiczby.contains(num))
+            {
+                wylosowaneLiczby.add(num);
+                elementyWTablicy++;
+            }
+        }
+        System.out.println(wylosowaneLiczby);
+    }
+    public void policzTrafienia()
+    {
+
+        elementyWTablicy = 0;
+        while(elementyWTablicy < wylosowaneLiczby.size())
+        {
+            if(wylosowaneLiczby.contains(wpisaneLiczby.get(elementyWTablicy)))
+            {
+                liczbaTrafien++;
+            }
+            elementyWTablicy++;
+        }
+        System.out.println("Liczba trafień: " + liczbaTrafien);
+    }
+
+
 
 }
