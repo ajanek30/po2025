@@ -59,6 +59,7 @@ public class LottoArrayList
                 liczbaTrafien++;
             }
             elementyWTablicy++;
+            elementyWTablicy++.
         }
         System.out.println("Liczba trafień: " + liczbaTrafien);
     }
