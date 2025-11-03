@@ -5,8 +5,9 @@ public class Komponent
     private String nazwa;
     private int waga;
     private int cena;
-    static String producent;
-    static String model;
+    static protected String producent;
+    static protected String model;
+    static protected boolean stanWlaczenia;
 
     public Komponent(String nazwa, int waga, int cena) {
         this.nazwa = nazwa;
@@ -24,5 +25,13 @@ public class Komponent
 
     public int getCena() {
         return cena;
+    }
+    public String getProducent()
+    {
+        return producent;
+    }
+    public String getModel()
+    {
+        return model;
     }
 }

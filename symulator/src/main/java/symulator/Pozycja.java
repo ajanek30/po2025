@@ -11,8 +11,12 @@ public class Pozycja
     }
     public void aktualizujPozycje(double deltaX, double deltaY)
     {
-        this.x = deltaX;
-        this.y = deltaY;
+        if(Komponent.stanWlaczenia)
+        {
+            this.x += deltaX;
+            this.y += deltaY;
+        }
+
     }
 
     public String getPozycja()

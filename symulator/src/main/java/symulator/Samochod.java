@@ -2,7 +2,6 @@ package symulator;
 
 public class Samochod
 {
-    private boolean stanWlaczenia;
     private String nrRejest;
     private String model;
     private int predkoscMax;
@@ -10,8 +9,8 @@ public class Samochod
     private Silnik silnik;
     private SkrzyniaBiegow skrzynia;
 
-    public Samochod(boolean stanWlaczenia, String nrRejest, String model, int predkoscMax, Pozycja aktualnaPozycja,Silnik silnik,SkrzyniaBiegow skrzynia) {
-        this.stanWlaczenia = stanWlaczenia;
+    public Samochod(String nrRejest, String model, int predkoscMax, Pozycja aktualnaPozycja,Silnik silnik,SkrzyniaBiegow skrzynia) {
+        Komponent.stanWlaczenia = false;
         this.nrRejest = nrRejest;
         this.model = model;
         this.predkoscMax = predkoscMax;
@@ -28,6 +27,5 @@ public class Samochod
         silnik.zatrzymaj();
     }
 
-
 }
-//Samochod autko1 = new Samochod(true,"KK11223","Insignia",230,new Pozycja(2.2,3.3),new Silnik(4000,"2.0TDI",1500,42999));
+
