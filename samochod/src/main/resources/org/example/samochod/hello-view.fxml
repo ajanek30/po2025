@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1026.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1096.0" prefWidth="1642.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <VBox prefHeight="832.0" prefWidth="287.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="710.0" prefWidth="287.0" BorderPane.alignment="CENTER">
          <children>
-            <TitledPane animated="false" text="Samochód">
+            <TitledPane animated="false" prefHeight="241.0" prefWidth="275.0" text="Samochód">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="315.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="165.0" prefWidth="191.0">
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
@@ -19,7 +20,7 @@
                                  <font>
                                     <Font size="16.0" />
                                  </font></Label>
-                              <Label prefHeight="29.0" prefWidth="90.0" text="Nr rejestracyjny">
+                              <Label prefHeight="29.0" prefWidth="110.0" text="Nr rejestracyjny">
                                  <font>
                                     <Font size="16.0" />
                                  </font></Label>
@@ -32,12 +33,15 @@
                                     <Font size="16.0" />
                                  </font></Label>
                            </children></VBox>
-                        <HBox layoutY="139.0" prefHeight="27.0" prefWidth="200.0" spacing="5.0">
+                        <HBox alignment="CENTER" layoutX="39.0" layoutY="139.0" prefHeight="29.0" prefWidth="208.0" spacing="5.0">
                            <children>
                               <Button mnemonicParsing="false" text="Włącz" />
                               <Button mnemonicParsing="false" text="Wyłącz" />
                               <Button mnemonicParsing="false" text="Button" />
                            </children>
+                           <effect>
+                              <Blend />
+                           </effect>
                         </HBox>
                         <TextField layoutX="112.0" layoutY="14.0" />
                         <TextField layoutX="112.0" layoutY="39.0" />
@@ -49,7 +53,7 @@
             </TitledPane>
             <TitledPane animated="false" text="Skrzynia Biegów">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="303.0" prefWidth="402.0">
                      <children>
                         <VBox prefHeight="124.0" prefWidth="100.0">
                            <children>
@@ -58,7 +62,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label prefHeight="25.0" prefWidth="77.0" text="Cena">
+                              <Label prefHeight="39.0" prefWidth="84.0" text="Cena">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -84,9 +88,9 @@
                   </AnchorPane>
               </content>
             </TitledPane>
-            <TitledPane animated="false" text="Silnik">
+            <TitledPane animated="false" prefHeight="327.0" prefWidth="399.0" text="Silnik">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="269.0" prefWidth="381.0">
                      <children>
                         <VBox prefHeight="123.0" prefWidth="123.0">
                            <children>
@@ -120,7 +124,7 @@
                      </children></AnchorPane>
               </content>
             </TitledPane>
-            <TitledPane animated="false" text="Sprzęgło">
+            <TitledPane animated="false" prefHeight="307.0" prefWidth="426.0" text="Sprzęgło">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -154,26 +158,36 @@
       </VBox>
    </left>
    <center>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+      <ImageView fitHeight="52.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_LEFT">
+         <image>
+            <Image url="@../../../wesole-auto-cars-samocho_8702.jpg" />
+         </image></ImageView>
    </center>
    <top>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="41.0" prefWidth="1026.0" BorderPane.alignment="CENTER">
          <children>
             <MenuBar>
               <menus>
-                <Menu mnemonicParsing="false" text="File">
+                <Menu mnemonicParsing="false" text="Plik">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Close" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
+                <Menu mnemonicParsing="false" text="Edycja">
                   <items>
                     <MenuItem mnemonicParsing="false" text="Delete" />
                   </items>
                 </Menu>
               </menus>
             </MenuBar>
-            <ComboBox prefWidth="150.0" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Samochód" />
+                  <ComboBox prefWidth="150.0" />
+                  <Button mnemonicParsing="false" text="Dodaj nowy" />
+                  <Button mnemonicParsing="false" text="Usuń" />
+               </children>
+            </HBox>
          </children>
       </VBox>
    </top>
