@@ -4,9 +4,9 @@ public class MainSymulator
 {
     public static void main(String[] args)
     {
-        Silnik silnik1 = new Silnik(Komponent.producent = "Volkswagen",Komponent.model = "323kds",5000,"2.0TDI",350,3995);
-        Sprzeglo sprzeglo1 = new Sprzeglo("Yomaha","FuryX","sprzeglo",344,2137);
-        SkrzyniaBiegow skrzynia1 = new SkrzyniaBiegow("Hashimoto","322234",1,6,3,"skrzynia",150,1499,sprzeglo1);
+        Silnik silnik1 = new Silnik( "Volkswagen", "323kds",5000,"2.0TDI",350,3995,false);
+        Sprzeglo sprzeglo1 = new Sprzeglo("Yomaha","FuryX","sprzeglo",344,2137,false);
+        SkrzyniaBiegow skrzynia1 = new SkrzyniaBiegow("Hashimoto","322234",1,6,3,"skrzynia",150,1499,sprzeglo1,false);
         Pozycja pozycja1 = new Pozycja(1.0,1.0);
 
         Samochod autko1 = new Samochod("KK11223","Insignia",230,pozycja1,silnik1,skrzynia1);

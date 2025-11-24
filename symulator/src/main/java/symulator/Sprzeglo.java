@@ -3,12 +3,11 @@ package symulator;
 public class Sprzeglo extends Komponent
 {
     protected boolean stanSprzegla;
+    //public Komponent komponent;
 
-    public Sprzeglo(String producent,String model,String nazwa, int waga, int cena)
+    public Sprzeglo(String producent,String model,String nazwa, int waga, int cena,boolean stanWlaczenia)
     {
-        super(nazwa,waga,cena);
-        Komponent.producent = producent;
-        Komponent.model = model;
+        super(producent,model,nazwa,waga,cena,stanWlaczenia);
         this.stanSprzegla = false;
     }
     public void wcisnij()

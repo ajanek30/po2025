@@ -10,7 +10,7 @@ public class Samochod
     private SkrzyniaBiegow skrzynia;
 
     public Samochod(String nrRejest, String model, int predkoscMax, Pozycja aktualnaPozycja,Silnik silnik,SkrzyniaBiegow skrzynia) {
-        Komponent.stanWlaczenia = false;
+        //komponent.stanWlaczenia = false;
         this.nrRejest = nrRejest;
         this.model = model;
         this.predkoscMax = predkoscMax;

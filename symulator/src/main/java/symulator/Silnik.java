@@ -5,21 +5,21 @@ public class Silnik extends Komponent
     private int maxObroty;
     private int obroty;
 
-    public Silnik(String producent,String model,int maxObroty,String nazwa,int waga,int cena) {
-        super(nazwa,waga,cena);
+    public Silnik(String producent,String model,int maxObroty,String nazwa,int waga,int cena,boolean stanWlaczenia) {
+        super(producent,model,nazwa,waga,cena,stanWlaczenia);
         this.maxObroty = maxObroty;
         this.obroty = 800;
-        Komponent.producent = producent;
-        Komponent.model = model;
+
+
     }
     public void uruchom()
     {
-        Komponent.stanWlaczenia = true;
+        stanWlaczenia = true;
         this.obroty = 800;
     }
     public void zatrzymaj()
     {
-        Komponent.stanWlaczenia = false;
+        stanWlaczenia = false;
         obroty = 0;
     }
     public void zwiekszObroty()

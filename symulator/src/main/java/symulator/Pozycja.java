@@ -11,11 +11,10 @@ public class Pozycja
     }
     public void aktualizujPozycje(double deltaX, double deltaY)
     {
-        if(Komponent.stanWlaczenia)
-        {
+        //warunek z stanwlaczenia do uzup chba
             this.x += deltaX;
             this.y += deltaY;
-        }
+
 
     }
 

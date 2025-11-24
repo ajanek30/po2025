@@ -6,16 +6,16 @@ public class SkrzyniaBiegow extends Komponent
     private int iloscBiegow;
     private int aktualnePrzelozenie;
     Sprzeglo sprzeglo;
+    //public Komponent komponent;
 
-    public SkrzyniaBiegow(String producent,String model,int aktualnyBieg, int iloscBiegow, int aktualnePrzelozenie,String nazwa,int waga,int cena,Sprzeglo sprzeglo)
+    public SkrzyniaBiegow(String producent,String model,int aktualnyBieg, int iloscBiegow, int aktualnePrzelozenie,String nazwa,int waga,int cena,Sprzeglo sprzeglo,boolean stanWlaczenia)
     {
-        super(nazwa,waga,cena);
+        super(producent,model,nazwa,waga,cena,stanWlaczenia);
         this.aktualnyBieg = aktualnyBieg;
         this.iloscBiegow = iloscBiegow;
         this.aktualnePrzelozenie = aktualnePrzelozenie;
         this.sprzeglo = sprzeglo;
-        Komponent.producent = producent;
-        Komponent.model = model;
+
     }
 
     public int getAktualnyBieg() {
