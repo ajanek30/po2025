@@ -3,11 +3,18 @@ package org.example.samochod;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-//package symulator.*;
+import symulator.*;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 
-public class HelloController {
+public class HelloController implements javafx.fxml.Initializable{
+
+    private final ArrayList<Samochod> flota;
+    private Samochod aktualnySamochod;
+
     @FXML
     private Button wlaczButton;
     @FXML
@@ -31,15 +38,46 @@ public class HelloController {
     @FXML
     private Button usunButton;
     @FXML
-    private ComboBox samochodComboBox;
+    private ComboBox<Samochod> samochodComboBox;
 
+    public HelloController(ArrayList<Samochod> flota)
+    {
+        this.flota = flota;
+    }
+//    @FXML
+//    public void initizalize()
+//    {
+//        samochodComboBox.getItems().addAll(flota);
+//
+//        if (!flota.isEmpty()) {
+//            samochodComboBox.getSelectionModel().selectFirst();
+//            // USTAL STAN POCZĄTKOWY DLA ZMIENNEJ:
+//            this.aktualnySamochod = flota.get(0);
+//        }
+//
+//
+//        samochodComboBox.setOnAction(event -> {
+//            aktualnySamochod = samochodComboBox.getSelectionModel().getSelectedItem();
+//        });
+//        System.out.println("Wybrano: " + aktualnySamochod.toString());
+//    }
 
     @FXML
-    private void onWlaczButton() {
+    private void onWlaczButton()
+    {
+        if (aktualnySamochod == null) {
+            System.err.println("BŁĄD: Nie wybrano żadnego samochodu lub lista jest pusta.");
+            // Tutaj można też wyświetlić komunikat w UI
+            return;
+        }
+
+        // Kod wykonywany tylko wtedy, gdy aktualnySamochod jest pewne, że istnieje
+        aktualnySamochod.wlacz();
         System.out.println("Samochód uruchomiony!");
     }
     @FXML
     private void onWylaczButton() {
+        //auto1.wylacz();
         System.out.println("Samochód wylaczony!");
     }
     @FXML
@@ -78,11 +116,28 @@ public class HelloController {
     private void onUsunButton() {
         System.out.println("Usuniety button!");
     }
-//    @FXML
-//    private void onNacisnijButton() {
-//        System.out.println("Nacisniete sprzeglo!");
-//    }
-    //ComboBoX
+    @FXML
+    private void onSamochodComboBox()
+    {
+    }
+
+    @FXML
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle)
+    {
+        samochodComboBox.getItems().addAll(flota);
+
+        if (!flota.isEmpty()) {
+            samochodComboBox.getSelectionModel().selectFirst();
+            // USTAL STAN POCZĄTKOWY DLA ZMIENNEJ:
+            this.aktualnySamochod = flota.get(0);
+        }
 
 
+        samochodComboBox.setOnAction(event -> {
+            aktualnySamochod = samochodComboBox.getSelectionModel().getSelectedItem();
+        });
+        System.out.println("Wybrano: " + aktualnySamochod.toString());
+
+    }
 }
