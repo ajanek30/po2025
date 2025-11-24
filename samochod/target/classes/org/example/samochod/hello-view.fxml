@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1096.0" prefWidth="1642.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1096.0" prefWidth="1642.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.samochod.HelloController">
    <left>
       <VBox prefHeight="710.0" prefWidth="287.0" BorderPane.alignment="CENTER">
          <children>
@@ -35,9 +35,9 @@
                            </children></VBox>
                         <HBox alignment="CENTER" layoutX="39.0" layoutY="139.0" prefHeight="29.0" prefWidth="208.0" spacing="5.0">
                            <children>
-                              <Button mnemonicParsing="false" text="Włącz" />
-                              <Button mnemonicParsing="false" text="Wyłącz" />
-                              <Button mnemonicParsing="false" text="Button" />
+                              <Button fx:id="wlaczButton" mnemonicParsing="false" onAction="#onWlaczButton" text="Włącz" />
+                              <Button fx:id="wylaczButton" mnemonicParsing="false" onAction="#onWylaczButton" text="Wyłącz" />
+                              <Button fx:id="testButton" mnemonicParsing="false" onAction="#onTestButton" text="Button" />
                            </children>
                            <effect>
                               <Blend />
@@ -82,8 +82,8 @@
                         <TextField layoutX="114.0" layoutY="39.0" />
                         <TextField layoutX="114.0" layoutY="64.0" />
                         <TextField layoutX="114.0" layoutY="88.0" />
-                        <Button layoutX="14.0" layoutY="147.0" mnemonicParsing="false" text="Zwiększ Bieg" />
-                        <Button layoutX="137.0" layoutY="147.0" mnemonicParsing="false" text="Zmniejsz Bieg" />
+                        <Button fx:id="zwiekszBiegButton" layoutX="14.0" layoutY="147.0" mnemonicParsing="false" onAction="#onZwiekszBiegButtonButton" text="Zwiększ Bieg" />
+                        <Button fx:id="zmniejszBiegButton" layoutX="137.0" layoutY="147.0" mnemonicParsing="false" onAction="#onZmniejszBiegButtonButton" text="Zmniejsz Bieg" />
                      </children>
                   </AnchorPane>
               </content>
@@ -119,8 +119,8 @@
                         <TextField layoutX="115.0" layoutY="39.0" />
                         <TextField layoutX="115.0" layoutY="62.0" />
                         <TextField layoutX="115.0" layoutY="87.0" />
-                        <Button layoutX="36.0" layoutY="141.0" mnemonicParsing="false" text="Dodaj gazu" />
-                        <Button layoutX="143.0" layoutY="141.0" mnemonicParsing="false" text="Ujmij gazu" />
+                        <Button fx:id="dodajGazuButton" layoutX="36.0" layoutY="141.0" mnemonicParsing="false" onAction="#onDodajGazuButton" text="Dodaj gazu" />
+                        <Button fx:id="ujmijGazuButton" layoutX="143.0" layoutY="141.0" mnemonicParsing="false" onAction="#onUjmijGazuButton" text="Ujmij gazu" />
                      </children></AnchorPane>
               </content>
             </TitledPane>
@@ -149,8 +149,8 @@
                         <TextField layoutX="112.0" layoutY="31.0" />
                         <TextField layoutX="112.0" layoutY="56.0" />
                         <TextField layoutX="112.0" layoutY="78.0" />
-                        <Button layoutX="50.0" layoutY="141.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" text="Naciśnij" />
-                        <Button layoutX="161.0" layoutY="141.0" mnemonicParsing="false" text="Zwolnij" />
+                        <Button fx:id="nacisnijButton" layoutX="50.0" layoutY="141.0" mnemonicParsing="false" onAction="#onNacisnijButton" prefHeight="25.0" prefWidth="66.0" text="Naciśnij" />
+                        <Button fx:id="zwolnijButton" layoutX="161.0" layoutY="141.0" mnemonicParsing="false" onAction="#onZwolnijButton" text="Zwolnij" />
                      </children></AnchorPane>
               </content>
             </TitledPane>
@@ -183,9 +183,9 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Samochód" />
-                  <ComboBox prefWidth="150.0" />
-                  <Button mnemonicParsing="false" text="Dodaj nowy" />
-                  <Button mnemonicParsing="false" text="Usuń" />
+                  <ComboBox fx:id="samochodComboBox" prefWidth="150.0" />
+                  <Button fx:id="dodajNowyButton" mnemonicParsing="false" onAction="#onDodajNowyButton" text="Dodaj nowy" />
+                  <Button fx:id="usunButton" mnemonicParsing="false" onAction="#onUsunButton" text="Usuń" />
                </children>
             </HBox>
          </children>
