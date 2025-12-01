@@ -3,6 +3,7 @@ package org.example.samochod;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import symulator.*;
 
 import java.net.URL;
@@ -15,6 +16,8 @@ public class HelloController implements javafx.fxml.Initializable{
     private final ArrayList<Samochod> flota;
     private Samochod aktualnySamochod;
 
+    @FXML
+    private TextField obrotySilnikTextField;
     @FXML
     private Button wlaczButton;
     @FXML
@@ -37,6 +40,37 @@ public class HelloController implements javafx.fxml.Initializable{
     private Button dodajNowyButton;
     @FXML
     private Button usunButton;
+    ///  text fieldy
+    @FXML
+    private TextField wagaSamochodTextField;
+    @FXML
+    private TextField nrRejTextField;
+    @FXML
+    private TextField modelTextField;
+    @FXML
+    private TextField predkoscTextField;
+    @FXML
+    private TextField nazwaSkrzyniaTextField;
+    @FXML
+    private TextField cenaSkrzyniaTextField;
+    @FXML
+    private TextField wagaSkrzyniaTextField;
+    @FXML
+    private TextField biegSkrzyniaTextField;
+    @FXML
+    private TextField nazwaSilnikTextField;
+    @FXML
+    private TextField cenaSilnikTextField;
+    @FXML
+    private TextField wagaSilnikTextField;
+    @FXML
+    private TextField nazwaSprzegloTextField;
+    @FXML
+    private TextField cenaSprzegloTextField;
+    @FXML
+    private TextField wagaSprzegloTextField;
+    @FXML
+    private TextField stanSprzegloTextField;
     @FXML
     private ComboBox<Samochod> samochodComboBox;
 
@@ -62,6 +96,27 @@ public class HelloController implements javafx.fxml.Initializable{
 //        System.out.println("Wybrano: " + aktualnySamochod.toString());
 //    }
 
+    public void refresh()
+    {
+
+        wagaSamochodTextField.setText(String.valueOf(aktualnySamochod.getWaga()));
+        nrRejTextField.setText(String.valueOf(aktualnySamochod.getNrRejest()));
+        modelTextField.setText(String.valueOf(aktualnySamochod.getModel()));
+        predkoscTextField.setText(String.valueOf(aktualnySamochod.getModel()));
+        nazwaSkrzyniaTextField.setText(String.valueOf(aktualnySamochod.getSkrzynia().getNazwa()));
+        cenaSkrzyniaTextField.setText(String.valueOf(aktualnySamochod.getSkrzynia().getCena()));
+        wagaSkrzyniaTextField.setText(String.valueOf(aktualnySamochod.getSkrzynia().getWaga()));
+        biegSkrzyniaTextField.setText(String.valueOf(aktualnySamochod.getSkrzynia().getAktualnyBieg()));
+        nazwaSilnikTextField.setText(String.valueOf(aktualnySamochod.getSilnik().getNazwa()));
+        cenaSilnikTextField.setText(String.valueOf(aktualnySamochod.getSilnik().getCena()));
+        wagaSilnikTextField.setText(String.valueOf(aktualnySamochod.getSilnik().getWaga()));
+        obrotySilnikTextField.setText(String.valueOf(aktualnySamochod.getSilnik().getObroty()));
+        nazwaSprzegloTextField.setText(String.valueOf(aktualnySamochod.getSprzeglo().getNazwa()));
+        cenaSprzegloTextField.setText(String.valueOf(aktualnySamochod.getSprzeglo().getCena()));
+        wagaSprzegloTextField.setText(String.valueOf(aktualnySamochod.getSprzeglo().getWaga()));
+        stanSprzegloTextField.setText(String.valueOf(aktualnySamochod.getSprzeglo().getStanSprzegla()));
+
+    }
     @FXML
     private void onWlaczButton()
     {
@@ -87,6 +142,8 @@ public class HelloController implements javafx.fxml.Initializable{
     @FXML
     private void onZwiekszBiegButtonButton() {
         System.out.println("Bieg zwiększony!");
+        aktualnySamochod.getSkrzynia().zwiekszBieg();
+        refresh();
     }
     @FXML
     private void onZmniejszBiegButtonButton() {

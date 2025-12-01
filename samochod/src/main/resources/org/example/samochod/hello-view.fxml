@@ -43,10 +43,10 @@
                               <Blend />
                            </effect>
                         </HBox>
-                        <TextField layoutX="112.0" layoutY="14.0" />
-                        <TextField layoutX="112.0" layoutY="39.0" />
-                        <TextField layoutX="112.0" layoutY="64.0" />
-                        <TextField layoutX="112.0" layoutY="88.0" />
+                        <TextField fx:id="wagaSamochodTextField" editable="false" layoutX="112.0" layoutY="14.0" onAction="#refresh" />
+                        <TextField fx:id="nrRejTextField" editable="false" layoutX="112.0" layoutY="39.0" onAction="#refresh" />
+                        <TextField fx:id="modelTextField" editable="false" layoutX="112.0" layoutY="64.0" onAction="#refresh" />
+                        <TextField fx:id="predkoscTextField" editable="false" layoutX="112.0" layoutY="88.0" onAction="#refresh" />
                      </children>
                   </AnchorPane>
               </content>
@@ -78,10 +78,10 @@
                                  </font>
                               </Label>
                            </children></VBox>
-                        <TextField layoutX="114.0" layoutY="14.0" />
-                        <TextField layoutX="114.0" layoutY="39.0" />
-                        <TextField layoutX="114.0" layoutY="64.0" />
-                        <TextField layoutX="114.0" layoutY="88.0" />
+                        <TextField fx:id="nazwaSkrzyniaTextField" editable="false" layoutX="114.0" layoutY="14.0" onAction="#refresh" />
+                        <TextField fx:id="cenaSkrzyniaTextField" editable="false" layoutX="114.0" layoutY="39.0" onAction="#refresh" />
+                        <TextField fx:id="wagaSkrzyniaTextField" editable="false" layoutX="114.0" layoutY="64.0" onAction="#refresh" />
+                        <TextField fx:id="biegSkrzyniaTextField" editable="false" layoutX="114.0" layoutY="88.0" onAction="#refresh" />
                         <Button fx:id="zwiekszBiegButton" layoutX="14.0" layoutY="147.0" mnemonicParsing="false" onAction="#onZwiekszBiegButtonButton" text="Zwiększ Bieg" />
                         <Button fx:id="zmniejszBiegButton" layoutX="137.0" layoutY="147.0" mnemonicParsing="false" onAction="#onZmniejszBiegButtonButton" text="Zmniejsz Bieg" />
                      </children>
@@ -109,16 +109,16 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label text="Bieg">
+                              <Label text="Obroty">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
                            </children></VBox>
-                        <TextField layoutX="115.0" layoutY="14.0" />
-                        <TextField layoutX="115.0" layoutY="39.0" />
-                        <TextField layoutX="115.0" layoutY="62.0" />
-                        <TextField layoutX="115.0" layoutY="87.0" />
+                        <TextField fx:id="nazwaSilnikTextField" editable="false" layoutX="115.0" layoutY="14.0" onAction="#refresh" />
+                        <TextField fx:id="cenaSilnikTextField" editable="false" layoutX="115.0" layoutY="39.0" onAction="#refresh" />
+                        <TextField fx:id="wagaSilnikTextField" editable="false" layoutX="115.0" layoutY="62.0" onAction="#refresh" />
+                        <TextField fx:id="obrotySilnikTextField" editable="false" layoutX="115.0" layoutY="87.0" onAction="#refresh" />
                         <Button fx:id="dodajGazuButton" layoutX="36.0" layoutY="141.0" mnemonicParsing="false" onAction="#onDodajGazuButton" text="Dodaj gazu" />
                         <Button fx:id="ujmijGazuButton" layoutX="143.0" layoutY="141.0" mnemonicParsing="false" onAction="#onUjmijGazuButton" text="Ujmij gazu" />
                      </children></AnchorPane>
@@ -145,10 +145,10 @@
                            <font>
                               <Font size="16.0" />
                            </font></Label>
-                        <TextField layoutX="112.0" layoutY="6.0" />
-                        <TextField layoutX="112.0" layoutY="31.0" />
-                        <TextField layoutX="112.0" layoutY="56.0" />
-                        <TextField layoutX="112.0" layoutY="78.0" />
+                        <TextField fx:id="nazwaSprzegloTextField" editable="false" layoutX="112.0" layoutY="6.0" onAction="#refresh" />
+                        <TextField fx:id="cenaSprzegloTextField" editable="false" layoutX="112.0" layoutY="31.0" onAction="#refresh" />
+                        <TextField fx:id="wagaSprzegloTextField" editable="false" layoutX="112.0" layoutY="56.0" onAction="#refresh" />
+                        <TextField fx:id="stanSprzegloTextField" editable="false" layoutX="112.0" layoutY="78.0" onAction="#refresh" />
                         <Button fx:id="nacisnijButton" layoutX="50.0" layoutY="141.0" mnemonicParsing="false" onAction="#onNacisnijButton" prefHeight="25.0" prefWidth="66.0" text="Naciśnij" />
                         <Button fx:id="zwolnijButton" layoutX="161.0" layoutY="141.0" mnemonicParsing="false" onAction="#onZwolnijButton" text="Zwolnij" />
                      </children></AnchorPane>
