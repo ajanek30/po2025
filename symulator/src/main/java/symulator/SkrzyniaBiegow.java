@@ -7,8 +7,8 @@ public class SkrzyniaBiegow extends Komponent {
     private Sprzeglo sprzeglo;
 
     public SkrzyniaBiegow(String producent, String model, int aktualnyBieg, int iloscBiegow, int aktualnePrzelozenie,
-                          String nazwa, int waga, int cena, Sprzeglo sprzeglo, boolean stanWlaczenia) {
-        super(producent, model, nazwa, waga, cena, stanWlaczenia);
+                          String nazwa, int waga, int cena, Sprzeglo sprzeglo) {
+        super(producent, model, nazwa, waga, cena);
         this.aktualnyBieg = aktualnyBieg;
         this.iloscBiegow = iloscBiegow;
         this.aktualnePrzelozenie = aktualnePrzelozenie;
@@ -21,6 +21,10 @@ public class SkrzyniaBiegow extends Komponent {
 
     public int getAktualnePrzelozenie() {
         return aktualnePrzelozenie;
+    }
+    public int getIloscBiegow()
+    {
+        return iloscBiegow;
     }
 
     public void zwiekszBieg() {

@@ -17,6 +17,14 @@ public class Pozycja
 
 
     }
+    public double getX()
+    {
+        return x;
+    }
+    public double getY()
+    {
+        return y;
+    }
 
     public String getPozycja()
     {

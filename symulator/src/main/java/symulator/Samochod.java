@@ -13,7 +13,6 @@ public class Samochod
 
 
     public Samochod(String nrRejest, String model, int predkoscMax,int waga, Pozycja aktualnaPozycja,Silnik silnik,SkrzyniaBiegow skrzynia,Sprzeglo sprzeglo) {
-        //komponent.stanWlaczenia = false;
         this.nrRejest = nrRejest;
         this.model = model;
         this.predkoscMax = predkoscMax;
@@ -22,6 +21,10 @@ public class Samochod
         this.skrzynia = skrzynia;
         this.waga = waga;
         this.sprzeglo = sprzeglo;
+    }
+    @Override
+    public String toString() {
+        return model + " (" + nrRejest + ")";
     }
     public void wlacz()
     {
@@ -42,10 +45,6 @@ public class Samochod
     public int getWaga()
     {
         return waga;
-    }
-    public void zwiekszBieg()
-    {
-        skrzynia.zwiekszBieg();
     }
 
     public String getModel() {

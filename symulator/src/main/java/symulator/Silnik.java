@@ -4,55 +4,53 @@ public class Silnik extends Komponent
 {
     private int maxObroty;
     private int obroty;
+    protected boolean stanWlaczenia;
 
-    public Silnik(String producent,String model,int maxObroty,String nazwa,int waga,int cena,boolean stanWlaczenia) {
-        super(producent,model,nazwa,waga,cena,stanWlaczenia);
+    public Silnik(String producent,String model,int maxObroty,String nazwa,int waga,int cena) {
+        super(producent,model,nazwa,waga,cena);
         this.maxObroty = maxObroty;
-        this.obroty = 800;
+        stanWlaczenia = false;
+        this.obroty = 0;
 
 
     }
+    public boolean getStanWlaczenia()
+    {
+        return stanWlaczenia;
+    }
+    public void setStanWlaczenia(boolean stanWlaczenia)
+    {
+        this.stanWlaczenia = stanWlaczenia;
+    }
     public void uruchom()
     {
-        stanWlaczenia = true;
+        setStanWlaczenia(true);
         this.obroty = 800;
     }
     public void zatrzymaj()
     {
-        stanWlaczenia = false;
+        setStanWlaczenia(false);
         obroty = 0;
     }
-    public void zwiekszObroty()
-    {
-        if(obroty >= 800)
-        {
-            this.obroty += 100;
-        }
-        else if ((obroty + 100) == maxObroty)
-        {
-            obroty = maxObroty;
-        }
+    public void zwiekszObroty() {
+        if (!getStanWlaczenia()) return; // nic nie rób, jeśli silnik wyłączony
 
+        obroty += 100;
+        if (obroty > maxObroty) obroty = maxObroty; // ograniczenie do max
     }
-    public void zmniejszObroty()
-    {
-        if(obroty >= 900)
-        {
-            obroty -= 100;
-        }
-        else if(obroty == 800)
-        {
-            obroty = 800;
-        }
-        else
-        {
-            obroty = 0;
-        }
+    public void zmniejszObroty() {
+        if (!getStanWlaczenia()) return;
 
+        obroty -= 100;
+        if (obroty < 800) obroty = 800; // minimalne obroty jałowe
     }
     public int getObroty()
     {
         return this.obroty;
+    }
+    public int getMaxObroty()
+    {
+        return maxObroty;
     }
 }
 

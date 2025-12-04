@@ -1,11 +1,17 @@
 package org.example.samochod;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import symulator.*;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -73,6 +79,8 @@ public class HelloController implements javafx.fxml.Initializable{
     private TextField stanSprzegloTextField;
     @FXML
     private ComboBox<Samochod> samochodComboBox;
+    @FXML
+    private ImageView carImageView;
 
     public HelloController(ArrayList<Samochod> flota)
     {
@@ -81,6 +89,26 @@ public class HelloController implements javafx.fxml.Initializable{
 
     public void refresh()
     {
+        if (aktualnySamochod == null) {
+            // Jeśli nie ma aktualnego samochodu, wyczyść wszystkie pola
+            wagaSamochodTextField.clear();
+            nrRejTextField.clear();
+            modelTextField.clear();
+            predkoscTextField.clear();
+            nazwaSkrzyniaTextField.clear();
+            cenaSkrzyniaTextField.clear();
+            wagaSkrzyniaTextField.clear();
+            biegSkrzyniaTextField.clear();
+            nazwaSilnikTextField.clear();
+            cenaSilnikTextField.clear();
+            wagaSilnikTextField.clear();
+            obrotySilnikTextField.clear();
+            nazwaSprzegloTextField.clear();
+            cenaSprzegloTextField.clear();
+            wagaSprzegloTextField.clear();
+            stanSprzegloTextField.clear();
+            return;
+        }
 
         wagaSamochodTextField.setText(String.valueOf(aktualnySamochod.getWaga()));
         nrRejTextField.setText(String.valueOf(aktualnySamochod.getNrRejest()));
@@ -100,12 +128,37 @@ public class HelloController implements javafx.fxml.Initializable{
         stanSprzegloTextField.setText(String.valueOf(aktualnySamochod.getSprzeglo().isStanSprzegla()));
 
     }
+    public void openAddCarWindow() throws IOException
+    {
+        FXMLLoader loader = new
+                FXMLLoader(getClass().getResource("DodajSamochod.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(loader.load()));
+        DodajSamochodController controller = loader.getController();
+        controller.setMainController(this);
+        stage.setTitle("Dodaj nowy samochód");
+        stage.show();
+    }
+    public void addCarToList(Samochod nowySamochod) {
+        if (nowySamochod == null) return;
+
+        // Dodaj do listy
+        flota.add(nowySamochod);
+
+        // Ustaw nowy samochód jako aktualny
+        aktualnySamochod = nowySamochod;
+
+        // Odśwież ComboBox — konwertujemy ArrayList na ObservableList na potrzeby ComboBox
+        samochodComboBox.getItems().setAll(flota);
+        samochodComboBox.getSelectionModel().select(nowySamochod);
+
+        refresh(); // odśwież pola w UI
+    }
     @FXML
     private void onWlaczButton()
     {
         if (aktualnySamochod == null) {
             System.err.println("BŁĄD: Nie wybrano żadnego samochodu lub lista jest pusta.");
-            // Tutaj można też wyświetlić komunikat w UI
             return;
         }
 
@@ -121,10 +174,6 @@ public class HelloController implements javafx.fxml.Initializable{
         }
         aktualnySamochod.wylacz();
         refresh();
-    }
-    @FXML
-    private void onTestButton() {
-        // do usuniecia
     }
     @FXML
     private void onZwiekszBiegButtonButton() {
@@ -181,40 +230,56 @@ public class HelloController implements javafx.fxml.Initializable{
         refresh();
     }
     @FXML
-    private void onDodajNowyButton() {
-        //do combobox
+    private void onDodajNowyButton() throws IOException {
+        openAddCarWindow();
         System.out.println("Dodany Button!");
         refresh();
     }
     @FXML
     private void onUsunButton() {
-        //do combobox
-        System.out.println("Usuniety button!");
-        refresh();
-    }
-    @FXML
-    private void onSamochodComboBox()
-    {
+        if (aktualnySamochod != null) {
+            // Usuń z listy
+            flota.remove(aktualnySamochod);
+
+            // Odśwież ComboBox
+            samochodComboBox.getItems().setAll(flota);
+
+            // Ustaw nowy aktualny samochód lub null jeśli lista pusta
+            if (!flota.isEmpty()) {
+                aktualnySamochod = flota.get(0);
+                samochodComboBox.getSelectionModel().select(aktualnySamochod);
+            } else {
+                aktualnySamochod = null;
+                samochodComboBox.getSelectionModel().clearSelection();
+            }
+
+            // Odśwież pola w UI
+            refresh();
+        }
     }
 
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
+
         samochodComboBox.getItems().addAll(flota);
-
-        if (!flota.isEmpty()) {
-            samochodComboBox.getSelectionModel().selectFirst();
-            this.aktualnySamochod = flota.get(0);
-            refresh();
-        }
-
 
         samochodComboBox.setOnAction(event -> {
             aktualnySamochod = samochodComboBox.getSelectionModel().getSelectedItem();
             refresh();
         });
-        System.out.println("Wybrano: " + aktualnySamochod.toString());
+        samochodComboBox.getSelectionModel().clearSelection();
+
+        System.out.println("HelloController initialized");
+        Image carImage = new Image(getClass().getResource("/wesole-auto-cars-samocho_8702.jpg").toExternalForm());
+        System.out.println("Image width: " +
+                carImage.getWidth() + ", height: " + carImage.getHeight());
+        carImageView.setImage(carImage);
+        carImageView.setFitWidth(50);
+        carImageView.setFitHeight(50);
+        carImageView.setTranslateX(0);
+        carImageView.setTranslateY(0);
 
 
     }

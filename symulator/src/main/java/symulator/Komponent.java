@@ -6,16 +6,15 @@ public class Komponent {
     private int cena;
     private String producent;
     private String model;
-    protected boolean stanWlaczenia;
 
-    public Komponent(String producent, String model, String nazwa, int waga, int cena, boolean stanWlaczenia) {
+    public Komponent(String producent, String model, String nazwa, int waga, int cena) {
         this.producent = producent;
         this.model = model;
         this.nazwa = nazwa;
         this.waga = waga;
         this.cena = cena;
-        this.stanWlaczenia = stanWlaczenia;
     }
+
 
     public String getNazwa() {
         return nazwa;
@@ -37,17 +36,4 @@ public class Komponent {
         return model;
     }
 
-    public boolean isWlaczony() {
-        return stanWlaczenia;
-    }
-
-    public void wlacz() {
-        stanWlaczenia = true;
-        System.out.println(nazwa + " wlaczony");
-    }
-
-    public void wylacz() {
-        stanWlaczenia = false;
-        System.out.println(nazwa + " wylaczony");
-    }
 }
