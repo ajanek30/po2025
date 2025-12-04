@@ -1,3 +1,3 @@
-module symulator {
+module BackEND {
     exports symulator;
 }

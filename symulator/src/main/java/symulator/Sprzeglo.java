@@ -1,34 +1,31 @@
 package symulator;
 
-public class Sprzeglo extends Komponent
-{
-    protected boolean stanSprzegla;
-    //public Komponent komponent;
+public class Sprzeglo extends Komponent {
+    private boolean stanSprzegla;
 
-    public Sprzeglo(String producent,String model,String nazwa, int waga, int cena,boolean stanWlaczenia)
-    {
-        super(producent,model,nazwa,waga,cena,stanWlaczenia);
+    public Sprzeglo(String producent, String model, String nazwa, int waga, int cena, boolean stanWlaczenia) {
+        super(producent, model, nazwa, waga, cena, stanWlaczenia);
         this.stanSprzegla = false;
     }
-    public void wcisnij()
-    {
-        if(stanWlaczenia)
-        {
-            this.stanSprzegla = true;
-        }
 
-
-    }
-    public void zwolnij()
-    {
-        if(stanWlaczenia)
-        {
-            this.stanSprzegla = false;
+    // Wciśnięcie sprzęgła działa tylko jeśli komponent jest włączony
+    public void wcisnij() {
+        if (isWlaczony()) {
+            stanSprzegla = true;
+            System.out.println("Sprzęgło wciśnięte");
+        } else {
+            System.out.println("Nie można wcisnąć sprzęgła – komponent wyłączony");
         }
     }
-    public boolean getStanSprzegla()
-    {
-        return this.stanSprzegla;
+
+    public void zwolnij() {
+        if (isWlaczony()) {
+            stanSprzegla = false;
+            System.out.println("Sprzęgło zwolnione");
+        }
     }
 
+    public boolean isStanSprzegla() {
+        return stanSprzegla;
+    }
 }

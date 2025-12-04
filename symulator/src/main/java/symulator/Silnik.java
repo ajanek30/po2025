@@ -40,9 +40,13 @@ public class Silnik extends Komponent
         {
             obroty -= 100;
         }
-        else
+        else if(obroty == 800)
         {
             obroty = 800;
+        }
+        else
+        {
+            obroty = 0;
         }
 
     }

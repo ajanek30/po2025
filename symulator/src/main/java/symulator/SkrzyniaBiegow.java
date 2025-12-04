@@ -1,21 +1,18 @@
 package symulator;
 
-public class SkrzyniaBiegow extends Komponent
-{
+public class SkrzyniaBiegow extends Komponent {
     private int aktualnyBieg;
     private int iloscBiegow;
     private int aktualnePrzelozenie;
-    Sprzeglo sprzeglo;
-    //public Komponent komponent;
+    private Sprzeglo sprzeglo;
 
-    public SkrzyniaBiegow(String producent,String model,int aktualnyBieg, int iloscBiegow, int aktualnePrzelozenie,String nazwa,int waga,int cena,Sprzeglo sprzeglo,boolean stanWlaczenia)
-    {
-        super(producent,model,nazwa,waga,cena,stanWlaczenia);
+    public SkrzyniaBiegow(String producent, String model, int aktualnyBieg, int iloscBiegow, int aktualnePrzelozenie,
+                          String nazwa, int waga, int cena, Sprzeglo sprzeglo, boolean stanWlaczenia) {
+        super(producent, model, nazwa, waga, cena, stanWlaczenia);
         this.aktualnyBieg = aktualnyBieg;
         this.iloscBiegow = iloscBiegow;
         this.aktualnePrzelozenie = aktualnePrzelozenie;
         this.sprzeglo = sprzeglo;
-
     }
 
     public int getAktualnyBieg() {
@@ -25,27 +22,30 @@ public class SkrzyniaBiegow extends Komponent
     public int getAktualnePrzelozenie() {
         return aktualnePrzelozenie;
     }
-    public void zwiekszBieg()
-    {
-        if(aktualnyBieg >= 6)
-        {
-            this.aktualnyBieg = 6;
+
+    public void zwiekszBieg() {
+        if (!sprzeglo.isStanSprzegla()) {
+            System.out.println("Nie można zmienić biegu – sprzęgło nie wciśnięte");
+            return;
         }
-        else if(sprzeglo.stanSprzegla)
-        {
-            this.aktualnyBieg++;
+        if (aktualnyBieg < iloscBiegow) {
+            aktualnyBieg++;
+            System.out.println("Bieg zwiększony: " + aktualnyBieg);
+        } else {
+            System.out.println("Najwyższy bieg już osiągnięty");
         }
     }
-    public void zmniejszBieg()
-    {
-        if(aktualnyBieg <= 1)
-        {
-            this.aktualnyBieg = 1;
-        }
-        else if(sprzeglo.stanSprzegla)
-        {
-            this.aktualnyBieg--;
-        }
 
+    public void zmniejszBieg() {
+        if (!sprzeglo.isStanSprzegla()) {
+            System.out.println("Nie można zmienić biegu – sprzęgło nie wciśnięte");
+            return;
+        }
+        if (aktualnyBieg > 1) {
+            aktualnyBieg--;
+            System.out.println("Bieg zmniejszony: " + aktualnyBieg);
+        } else {
+            System.out.println("Najniższy bieg już osiągnięty");
+        }
     }
 }
