@@ -1,194 +1,220 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1096.0" prefWidth="1642.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.samochod.HelloController">
+<BorderPane prefHeight="1000" prefWidth="1600" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.samochod.HelloController">
+
+   <!-- LEWA KOLUMNA -->
    <left>
-      <VBox prefHeight="710.0" prefWidth="287.0" BorderPane.alignment="CENTER">
-         <children>
-            <TitledPane animated="false" prefHeight="241.0" prefWidth="275.0" text="Samochód">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="165.0" prefWidth="191.0">
-                     <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="Waga">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font></Label>
-                              <Label prefHeight="29.0" prefWidth="110.0" text="Nr rejestracyjny">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font></Label>
-                              <Label prefHeight="32.0" prefWidth="58.0" text="Model">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font></Label>
-                              <Label prefHeight="33.0" prefWidth="74.0" text="Prędkość">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font></Label>
-                           </children></VBox>
-                        <HBox alignment="CENTER" layoutX="39.0" layoutY="139.0" prefHeight="29.0" prefWidth="208.0" spacing="5.0">
-                           <children>
-                              <Button fx:id="wlaczButton" mnemonicParsing="false" onAction="#onWlaczButton" text="Włącz" />
-                              <Button fx:id="wylaczButton" mnemonicParsing="false" onAction="#onWylaczButton" text="Wyłącz" />
-                              <Button fx:id="testButton" mnemonicParsing="false" onAction="#onTestButton" text="Button" />
-                           </children>
-                           <effect>
-                              <Blend />
-                           </effect>
-                        </HBox>
-                        <TextField fx:id="wagaSamochodTextField" editable="false" layoutX="112.0" layoutY="14.0" onAction="#refresh" />
-                        <TextField fx:id="nrRejTextField" editable="false" layoutX="112.0" layoutY="39.0" onAction="#refresh" />
-                        <TextField fx:id="modelTextField" editable="false" layoutX="112.0" layoutY="64.0" onAction="#refresh" />
-                        <TextField fx:id="predkoscTextField" editable="false" layoutX="112.0" layoutY="88.0" onAction="#refresh" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </TitledPane>
-            <TitledPane animated="false" text="Skrzynia Biegów">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="303.0" prefWidth="402.0">
-                     <children>
-                        <VBox prefHeight="124.0" prefWidth="100.0">
-                           <children>
-                              <Label prefHeight="46.0" prefWidth="105.0" text="Nazwa">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="39.0" prefWidth="84.0" text="Cena">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label prefHeight="25.0" prefWidth="93.0" text="Waga">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Bieg">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children></VBox>
-                        <TextField fx:id="nazwaSkrzyniaTextField" editable="false" layoutX="114.0" layoutY="14.0" onAction="#refresh" />
-                        <TextField fx:id="cenaSkrzyniaTextField" editable="false" layoutX="114.0" layoutY="39.0" onAction="#refresh" />
-                        <TextField fx:id="wagaSkrzyniaTextField" editable="false" layoutX="114.0" layoutY="64.0" onAction="#refresh" />
-                        <TextField fx:id="biegSkrzyniaTextField" editable="false" layoutX="114.0" layoutY="88.0" onAction="#refresh" />
-                        <Button fx:id="zwiekszBiegButton" layoutX="14.0" layoutY="147.0" mnemonicParsing="false" onAction="#onZwiekszBiegButtonButton" text="Zwiększ Bieg" />
-                        <Button fx:id="zmniejszBiegButton" layoutX="137.0" layoutY="147.0" mnemonicParsing="false" onAction="#onZmniejszBiegButtonButton" text="Zmniejsz Bieg" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </TitledPane>
-            <TitledPane animated="false" prefHeight="327.0" prefWidth="399.0" text="Silnik">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="269.0" prefWidth="381.0">
-                     <children>
-                        <VBox prefHeight="123.0" prefWidth="123.0">
-                           <children>
-                              <Label text="Nazwa">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Cena">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Waga">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label text="Obroty">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                           </children></VBox>
-                        <TextField fx:id="nazwaSilnikTextField" editable="false" layoutX="115.0" layoutY="14.0" onAction="#refresh" />
-                        <TextField fx:id="cenaSilnikTextField" editable="false" layoutX="115.0" layoutY="39.0" onAction="#refresh" />
-                        <TextField fx:id="wagaSilnikTextField" editable="false" layoutX="115.0" layoutY="62.0" onAction="#refresh" />
-                        <TextField fx:id="obrotySilnikTextField" editable="false" layoutX="115.0" layoutY="87.0" onAction="#refresh" />
-                        <Button fx:id="dodajGazuButton" layoutX="36.0" layoutY="141.0" mnemonicParsing="false" onAction="#onDodajGazuButton" text="Dodaj gazu" />
-                        <Button fx:id="ujmijGazuButton" layoutX="143.0" layoutY="141.0" mnemonicParsing="false" onAction="#onUjmijGazuButton" text="Ujmij gazu" />
-                     </children></AnchorPane>
-              </content>
-            </TitledPane>
-            <TitledPane animated="false" prefHeight="307.0" prefWidth="426.0" text="Sprzęgło">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <VBox prefHeight="93.0" prefWidth="100.0" />
-                        <Label layoutY="5.0" text="Nazwa">
-                           <font>
-                              <Font size="16.0" />
-                           </font></Label>
-                        <Label layoutY="18.0" text="Cena">
-                           <font>
-                              <Font size="16.0" />
-                           </font></Label>
-                        <Label layoutY="33.0" text="Waga">
-                           <font>
-                              <Font size="16.0" />
-                           </font></Label>
-                        <Label layoutY="50.0" text="Stan">
-                           <font>
-                              <Font size="16.0" />
-                           </font></Label>
-                        <TextField fx:id="nazwaSprzegloTextField" editable="false" layoutX="112.0" layoutY="6.0" onAction="#refresh" />
-                        <TextField fx:id="cenaSprzegloTextField" editable="false" layoutX="112.0" layoutY="31.0" onAction="#refresh" />
-                        <TextField fx:id="wagaSprzegloTextField" editable="false" layoutX="112.0" layoutY="56.0" onAction="#refresh" />
-                        <TextField fx:id="stanSprzegloTextField" editable="false" layoutX="112.0" layoutY="78.0" onAction="#refresh" />
-                        <Button fx:id="nacisnijButton" layoutX="50.0" layoutY="141.0" mnemonicParsing="false" onAction="#onNacisnijButton" prefHeight="25.0" prefWidth="66.0" text="Naciśnij" />
-                        <Button fx:id="zwolnijButton" layoutX="161.0" layoutY="141.0" mnemonicParsing="false" onAction="#onZwolnijButton" text="Zwolnij" />
-                     </children></AnchorPane>
-              </content>
-            </TitledPane>
-         </children>
+      <VBox prefWidth="300" spacing="10">
+         <padding>
+            <Insets bottom="10" left="10" right="10" top="10" />
+         </padding>
+
+         <!-- Samochód -->
+         <TitledPane animated="false" text="Samochód">
+            <content>
+               <GridPane hgap="10" vgap="10">
+                  <padding>
+                     <Insets bottom="10" left="10" right="10" top="10" />
+                  </padding>
+
+                  <Label text="Waga" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <TextField fx:id="wagaSamochodTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                  <Label text="Nr rejestracyjny" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <TextField fx:id="nrRejTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                  <Label text="Model" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                  <TextField fx:id="modelTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                  <Label text="Prędkość" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                  <TextField fx:id="predkoscTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                  <HBox alignment="CENTER" spacing="10" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                     <Button fx:id="wlaczButton" onAction="#onWlaczButton" text="Włącz" />
+                     <Button fx:id="wylaczButton" onAction="#onWylaczButton" text="Wyłącz" />
+                     <Button fx:id="testButton" onAction="#onTestButton" text="Button" />
+                  </HBox>
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+
+               </GridPane>
+            </content>
+         </TitledPane>
+
+         <!-- Skrzynia Biegów -->
+         <TitledPane animated="false" text="Skrzynia Biegów">
+            <content>
+               <GridPane hgap="10" vgap="10">
+                  <padding>
+                     <Insets bottom="10" left="10" right="10" top="10" />
+                  </padding>
+
+                  <Label text="Nazwa" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <TextField fx:id="nazwaSkrzyniaTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                  <Label text="Cena" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <TextField fx:id="cenaSkrzyniaTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                  <Label text="Waga" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                  <TextField fx:id="wagaSkrzyniaTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                  <Label text="Bieg" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                  <TextField fx:id="biegSkrzyniaTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                  <HBox alignment="CENTER" spacing="10" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                     <Button fx:id="zwiekszBiegButton" onAction="#onZwiekszBiegButtonButton" text="Zwiększ Bieg" />
+                     <Button fx:id="zmniejszBiegButton" onAction="#onZmniejszBiegButtonButton" text="Zmniejsz Bieg" />
+                  </HBox>
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+
+               </GridPane>
+            </content>
+         </TitledPane>
+
+         <!-- Silnik -->
+         <TitledPane animated="false" text="Silnik">
+            <content>
+               <GridPane hgap="10" vgap="10">
+                  <padding>
+                     <Insets bottom="10" left="10" right="10" top="10" />
+                  </padding>
+
+                  <Label text="Nazwa" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <TextField fx:id="nazwaSilnikTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                  <Label text="Cena" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <TextField fx:id="cenaSilnikTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                  <Label text="Waga" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                  <TextField fx:id="wagaSilnikTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                  <Label text="Obroty" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                  <TextField fx:id="obrotySilnikTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                  <HBox alignment="CENTER" spacing="10" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                     <Button fx:id="dodajGazuButton" onAction="#onDodajGazuButton" text="Dodaj gazu" />
+                     <Button fx:id="ujmijGazuButton" onAction="#onUjmijGazuButton" text="Ujmij gazu" />
+                  </HBox>
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+
+               </GridPane>
+            </content>
+         </TitledPane>
+
+         <!-- Sprzęgło -->
+         <TitledPane animated="false" text="Sprzęgło">
+            <content>
+               <GridPane hgap="10" vgap="10">
+                  <padding>
+                     <Insets bottom="10" left="10" right="10" top="10" />
+                  </padding>
+
+                  <Label text="Nazwa" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <TextField fx:id="nazwaSprzegloTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                  <Label text="Cena" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <TextField fx:id="cenaSprzegloTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                  <Label text="Waga" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                  <TextField fx:id="wagaSprzegloTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                  <Label text="Stan" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                  <TextField fx:id="stanSprzegloTextField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                  <HBox alignment="CENTER" spacing="10" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                     <Button fx:id="nacisnijButton" onAction="#onNacisnijButton" text="Naciśnij" />
+                     <Button fx:id="zwolnijButton" onAction="#onZwolnijButton" text="Zwolnij" />
+                  </HBox>
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+
+               </GridPane>
+            </content>
+         </TitledPane>
+
       </VBox>
    </left>
+
+   <!-- OBRAZ -->
    <center>
-      <ImageView fitHeight="52.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_LEFT">
-         <image>
-            <Image url="@../../../wesole-auto-cars-samocho_8702.jpg" />
-         </image></ImageView>
+      <VBox alignment="TOP_LEFT" style="-fx-background-color: #00aa00;">
+         <padding>
+            <Insets bottom="20" left="20" right="20" top="20" />
+         </padding>
+
+         <ImageView fitHeight="50" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../../../wesole-auto-cars-samocho_8702.jpg" />
+            </image>
+         </ImageView>
+      </VBox>
    </center>
+
+
+   <!-- MENU GÓRNE -->
    <top>
-      <VBox prefHeight="41.0" prefWidth="1026.0" BorderPane.alignment="CENTER">
-         <children>
-            <MenuBar>
-              <menus>
-                <Menu mnemonicParsing="false" text="Plik">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edycja">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Samochód" />
-                  <ComboBox fx:id="samochodComboBox" prefWidth="150.0" />
-                  <Button fx:id="dodajNowyButton" mnemonicParsing="false" onAction="#onDodajNowyButton" text="Dodaj nowy" />
-                  <Button fx:id="usunButton" mnemonicParsing="false" onAction="#onUsunButton" text="Usuń" />
-               </children>
-            </HBox>
-         </children>
+      <VBox>
+
+         <MenuBar>
+            <Menu text="Plik"><MenuItem text="Close" /></Menu>
+            <Menu text="Edycja"><MenuItem text="Delete" /></Menu>
+         </MenuBar>
+
+         <HBox alignment="CENTER" spacing="10">
+            <padding>
+               <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+
+            <Label text="Samochód" />
+            <ComboBox fx:id="samochodComboBox" prefWidth="150" />
+            <Button fx:id="dodajNowyButton" onAction="#onDodajNowyButton" text="Dodaj nowy" />
+            <Button fx:id="usunButton" onAction="#onUsunButton" text="Usuń" />
+         </HBox>
+
       </VBox>
    </top>
+
 </BorderPane>

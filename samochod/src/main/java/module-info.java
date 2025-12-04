@@ -4,6 +4,6 @@ module org.example.samochod {
 
     opens org.example.samochod to javafx.fxml;
     exports org.example.samochod;
-    requires symulator;
+    requires BackEND;
     requires java.desktop;
 }
