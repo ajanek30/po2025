@@ -15,16 +15,6 @@ public class HelloApplication extends Application {
 
         ArrayList<Samochod> listaSamochodow = new ArrayList<>();
 
-        //Komponent k1 = new Komponent("Volks","xxx","asc",22,33);
-        Silnik silnik1 = new Silnik("Volkswagen","323kds",5000,"2.0TDI",350,3995,false);
-        Sprzeglo sprzeglo1 = new Sprzeglo("Yomaha","FuryX","sprzeglo",344,2137,false);
-        SkrzyniaBiegow skrzynia1 = new SkrzyniaBiegow("Hashimoto","322234",1,6,3,"skrzynia",150,1499,sprzeglo1,false);
-        Pozycja pozycja1 = new Pozycja(1.0,1.0);
-
-        Samochod autko1 = new Samochod("KK11223","Insignia",230,55555,pozycja1,silnik1,skrzynia1,sprzeglo1);
-
-        listaSamochodow.add(autko1);
-
 
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
 
@@ -41,6 +31,21 @@ public class HelloApplication extends Application {
                 }
             }
         });
+//        ma konkretny cel: pozwala na stworzenie instancji kontrolera HelloController z własnym konstruktorem, który przyjmuje listę samochodów (ArrayList<Samochod> listaSamochodow).
+//
+//                Normalnie, JavaFX przy ładowaniu FXML tworzy kontroler przy pomocy domyślnego konstruktora bez parametrów. Problem jest taki: Twój HelloController nie ma domyślnego konstruktora – on wymaga listy samochodów.
+//
+//        Dlatego musisz użyć setControllerFactory, żeby powiedzieć FXMLLoaderowi:
+//
+//        jeśli chcemy HelloController, to stwórz go z tą konkretną listą samochodów;
+//
+//        jeśli inny kontroler, użyj standardowego konstruktora.
+//
+//        Bez tego JavaFX rzuciłby wyjątek typu InstantiationException, bo nie umie stworzyć kontrolera bezpłatnie.
+//
+//💡 W skrócie: pozwala wstrzyknąć własną listę samochodów do kontrolera przy starcie aplikacji.
+//
+//        Mogę pokazać Ci też prostszy sposób, jeśli chcesz, żeby kontroler był tworzony domyślnie i potem tylko inicjalizował listę w initialize(). Chcesz, żebym to zrobił?
 
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
