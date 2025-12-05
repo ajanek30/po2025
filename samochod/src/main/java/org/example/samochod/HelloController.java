@@ -1,5 +1,6 @@
 package org.example.samochod;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,6 +9,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import symulator.*;
 
@@ -81,14 +84,15 @@ public class HelloController implements javafx.fxml.Initializable{
     private ComboBox<Samochod> samochodComboBox;
     @FXML
     private ImageView carImageView;
+    @FXML
+    private VBox mapa;
 
     public HelloController(ArrayList<Samochod> flota)
     {
         this.flota = flota;
     }
 
-    public void refresh()
-    {
+    public void refresh() {
         if (aktualnySamochod == null) {
             // Jeśli nie ma aktualnego samochodu, wyczyść wszystkie pola
             wagaSamochodTextField.clear();
@@ -113,7 +117,7 @@ public class HelloController implements javafx.fxml.Initializable{
         wagaSamochodTextField.setText(String.valueOf(aktualnySamochod.getWaga()));
         nrRejTextField.setText(String.valueOf(aktualnySamochod.getNrRejest()));
         modelTextField.setText(String.valueOf(aktualnySamochod.getModel()));
-        predkoscTextField.setText(String.valueOf(aktualnySamochod.getModel()));
+        predkoscTextField.setText(String.valueOf(aktualnySamochod.getPredkosc()));
         nazwaSkrzyniaTextField.setText(String.valueOf(aktualnySamochod.getSkrzynia().getNazwa()));
         cenaSkrzyniaTextField.setText(String.valueOf(aktualnySamochod.getSkrzynia().getCena()));
         wagaSkrzyniaTextField.setText(String.valueOf(aktualnySamochod.getSkrzynia().getWaga()));
@@ -127,6 +131,12 @@ public class HelloController implements javafx.fxml.Initializable{
         wagaSprzegloTextField.setText(String.valueOf(aktualnySamochod.getSprzeglo().getWaga()));
         stanSprzegloTextField.setText(String.valueOf(aktualnySamochod.getSprzeglo().isStanSprzegla()));
 
+
+        Platform.runLater(() -> {
+            carImageView.setTranslateX(aktualnySamochod.getAktualnaPozycja().getX());
+            carImageView.setTranslateX(aktualnySamochod.getAktualnaPozycja().getY());
+
+        });
     }
     public void openAddCarWindow() throws IOException
     {
@@ -281,6 +291,12 @@ public class HelloController implements javafx.fxml.Initializable{
         carImageView.setTranslateX(0);
         carImageView.setTranslateY(0);
 
-
-    }
+        mapa.setOnMouseClicked(event -> {
+            double x = event.getX();
+            double y = event.getY();
+            Pozycja cel = new Pozycja(x, y);
+            aktualnySamochod.jedzDo(cel);
+        });
 }
+}
+

@@ -181,7 +181,7 @@
 
    <!-- OBRAZ -->
    <center>
-      <VBox alignment="TOP_LEFT" style="-fx-background-color: #00aa00;">
+      <VBox fx:id="mapa" alignment="TOP_LEFT" style="-fx-background-color: #00aa00;">
          <padding>
             <Insets bottom="20" left="20" right="20" top="20" />
          </padding>

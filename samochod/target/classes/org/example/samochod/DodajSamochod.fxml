@@ -40,7 +40,7 @@
         <TextField fx:id="wagaSamochodTextField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
         <!-- PRĘDKOŚĆ -->
-        <Label alignment="CENTER_RIGHT" text="Prędkość Maksymalna" GridPane.rowIndex="3">
+        <Label alignment="CENTER_RIGHT" text="Prędkość" GridPane.rowIndex="3">
             <font><Font size="16"/></font>
         </Label>
         <TextField fx:id="predkoscTextField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>

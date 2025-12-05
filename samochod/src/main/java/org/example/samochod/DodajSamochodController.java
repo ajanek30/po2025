@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import symulator.*;
 
@@ -27,8 +28,10 @@ public class DodajSamochodController implements Initializable {
 
     @FXML private Button confirmButton;
     @FXML private Button cancelButton;
+    @FXML private ImageView carImageView;
 
     private HelloController mainController;
+
 
     // Listy komponentów do wyboru
     private List<Silnik> silniki = new ArrayList<>();
@@ -134,11 +137,11 @@ public class DodajSamochodController implements Initializable {
         String model = modelTextField.getText();
         String nrRej = nrRejTextField.getText();
         int waga;
-        int predkoscMax;
+        int predkosc;
 
         try {
             waga = Integer.parseInt(wagaSamochodTextField.getText());
-            predkoscMax = Integer.parseInt(predkoscTextField.getText());
+            predkosc = Integer.parseInt(predkoscTextField.getText());
         } catch (NumberFormatException e) {
             System.out.println("Niepoprawne dane!");
             return;
@@ -184,12 +187,14 @@ public class DodajSamochodController implements Initializable {
         Samochod nowySamochod = new Samochod(
                 nrRej,
                 model,
-                predkoscMax,
+                predkosc,
                 waga,
                 nowaPozycja,
                 nowySilnik,
                 nowaSkrzynia,
-                noweSprzeglo
+                noweSprzeglo,
+                carImageView
+
         );
 
         // Dodajemy samochód do głównej listy w HelloController

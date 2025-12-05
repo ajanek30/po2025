@@ -9,7 +9,7 @@ public class MainSymulator
         SkrzyniaBiegow skrzynia1 = new SkrzyniaBiegow("Hashimoto","322234",1,6,3,"skrzynia",150,1499,sprzeglo1);
         Pozycja pozycja1 = new Pozycja(1.0,1.0);
 
-        Samochod autko1 = new Samochod("KK11223","Insignia",230,6666,pozycja1,silnik1,skrzynia1,sprzeglo1);
+       // Samochod autko1 = new Samochod("KK11223","Insignia",230,6666,pozycja1,silnik1,skrzynia1,sprzeglo1);
 /// /////////////////////////////////////////////
 
 
