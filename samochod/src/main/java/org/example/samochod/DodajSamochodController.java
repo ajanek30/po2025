@@ -192,14 +192,14 @@ public class DodajSamochodController implements Initializable {
                 nowaPozycja,
                 nowySilnik,
                 nowaSkrzynia,
-                noweSprzeglo,
-                carImageView
+                noweSprzeglo);
 
-        );
 
         // Dodajemy samochód do głównej listy w HelloController
         if (mainController != null) {
             mainController.addCarToList(nowySamochod);
+            Stage stage = (Stage) confirmButton.getScene().getWindow();
+            stage.close();
         }
 
         // Zamykamy okno dodawania

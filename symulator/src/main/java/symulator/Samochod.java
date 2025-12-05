@@ -21,8 +21,7 @@ public class Samochod implements Runnable {
     private ImageView carImageView;
 
 
-    public Samochod(String nrRejest, String model, int predkosc, int waga, Pozycja aktualnaPozycja, Silnik silnik, SkrzyniaBiegow skrzynia, Sprzeglo sprzeglo, ImageView carImageView) {
-        watek = new Thread(this);
+    public Samochod(String nrRejest, String model, int predkosc, int waga, Pozycja aktualnaPozycja, Silnik silnik, SkrzyniaBiegow skrzynia, Sprzeglo sprzeglo) {
         this.nrRejest = nrRejest;
         this.model = model;
         this.predkosc = predkosc;
@@ -31,8 +30,9 @@ public class Samochod implements Runnable {
         this.skrzynia = skrzynia;
         this.waga = waga;
         this.sprzeglo = sprzeglo;
-        this.carImageView = carImageView;
+        //this.carImageView = carImageView;
 
+        watek = new Thread(this);
         watek.setDaemon(true);
         watek.start();
     }
@@ -52,25 +52,34 @@ public class Samochod implements Runnable {
 
         while (true) {
             try {
-                Thread.sleep(100); // 100 ms
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            if (cel != null) {
+            if (!silnik.getStanWlaczenia()) {
+                cel = null; // zatrzymanie ruchu jeśli silnik wyłączony
+                continue;
+            }
 
-                double dx = cel.getX() - aktualnaPozycja.getX();
-                double dy = cel.getY() - aktualnaPozycja.getY();
-                double odleglosc = Math.sqrt(dx * dx + dy * dy);
+            Pozycja lokalnyCel = cel; // zabezpieczenie przed NullPointerException
+            if (lokalnyCel != null) {
+                double dx = lokalnyCel.getX() - aktualnaPozycja.getX();
+                double dy = lokalnyCel.getY() - aktualnaPozycja.getY();
+                double odleglosc = Math.sqrt(dx*dx + dy*dy);
 
-                // dotarcie do celu
-                if (odleglosc < 0.1) {
+                double krok = predkosc * deltat;
+                if (krok > odleglosc) krok = odleglosc;
+
+                if (odleglosc < 0.5) {
+                    aktualnaPozycja.setX(lokalnyCel.getX());
+                    aktualnaPozycja.setY(lokalnyCel.getY());
                     cel = null;
                     continue;
                 }
 
-                double vx = predkosc * deltat * dx / odleglosc;
-                double vy = predkosc * deltat * dy / odleglosc;
+                double vx = krok * dx / odleglosc;
+                double vy = krok * dy / odleglosc;
 
                 aktualnaPozycja.setX(aktualnaPozycja.getX() + vx);
                 aktualnaPozycja.setY(aktualnaPozycja.getY() + vy);
@@ -80,12 +89,11 @@ public class Samochod implements Runnable {
                         carImageView.setTranslateX(aktualnaPozycja.getX());
                         carImageView.setTranslateY(aktualnaPozycja.getY());
                     });
-
-
                 }
             }
         }
     }
+
     public void wlacz()
     {
         silnik.uruchom();
@@ -131,7 +139,13 @@ public class Samochod implements Runnable {
         return skrzynia;
     }
 
-
+    public ImageView getCarImageView() {
+        return carImageView;
+    }
+    public void setCarImageView(ImageView carImageView)
+    {
+        this.carImageView = carImageView;
+    }
     //on nie dziedziczy bezposrednio po tych komponentach i przez to nie widzi co powinoien
 
 }

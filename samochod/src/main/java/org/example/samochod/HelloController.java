@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import symulator.*;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 
-public class HelloController implements javafx.fxml.Initializable{
+public class HelloController implements javafx.fxml.Initializable {
 
     private final ArrayList<Samochod> flota;
     private Samochod aktualnySamochod;
@@ -82,19 +83,18 @@ public class HelloController implements javafx.fxml.Initializable{
     private TextField stanSprzegloTextField;
     @FXML
     private ComboBox<Samochod> samochodComboBox;
+    //@FXML
+    //private ImageView carImageView;
     @FXML
-    private ImageView carImageView;
-    @FXML
-    private VBox mapa;
+    private Pane mapa;
 
-    public HelloController(ArrayList<Samochod> flota)
-    {
+    public HelloController(ArrayList<Samochod> flota) {
         this.flota = flota;
     }
 
     public void refresh() {
         if (aktualnySamochod == null) {
-            // Jeśli nie ma aktualnego samochodu, wyczyść wszystkie pola
+            // Wyczyść pola
             wagaSamochodTextField.clear();
             nrRejTextField.clear();
             modelTextField.clear();
@@ -114,30 +114,41 @@ public class HelloController implements javafx.fxml.Initializable{
             return;
         }
 
+        // Ustaw pola
         wagaSamochodTextField.setText(String.valueOf(aktualnySamochod.getWaga()));
-        nrRejTextField.setText(String.valueOf(aktualnySamochod.getNrRejest()));
-        modelTextField.setText(String.valueOf(aktualnySamochod.getModel()));
+        nrRejTextField.setText(aktualnySamochod.getNrRejest());
+        modelTextField.setText(aktualnySamochod.getModel());
         predkoscTextField.setText(String.valueOf(aktualnySamochod.getPredkosc()));
-        nazwaSkrzyniaTextField.setText(String.valueOf(aktualnySamochod.getSkrzynia().getNazwa()));
+
+        nazwaSkrzyniaTextField.setText(aktualnySamochod.getSkrzynia().getNazwa());
         cenaSkrzyniaTextField.setText(String.valueOf(aktualnySamochod.getSkrzynia().getCena()));
         wagaSkrzyniaTextField.setText(String.valueOf(aktualnySamochod.getSkrzynia().getWaga()));
         biegSkrzyniaTextField.setText(String.valueOf(aktualnySamochod.getSkrzynia().getAktualnyBieg()));
-        nazwaSilnikTextField.setText(String.valueOf(aktualnySamochod.getSilnik().getNazwa()));
+
+        nazwaSilnikTextField.setText(aktualnySamochod.getSilnik().getNazwa());
         cenaSilnikTextField.setText(String.valueOf(aktualnySamochod.getSilnik().getCena()));
         wagaSilnikTextField.setText(String.valueOf(aktualnySamochod.getSilnik().getWaga()));
         obrotySilnikTextField.setText(String.valueOf(aktualnySamochod.getSilnik().getObroty()));
-        nazwaSprzegloTextField.setText(String.valueOf(aktualnySamochod.getSprzeglo().getNazwa()));
+
+        nazwaSprzegloTextField.setText(aktualnySamochod.getSprzeglo().getNazwa());
         cenaSprzegloTextField.setText(String.valueOf(aktualnySamochod.getSprzeglo().getCena()));
         wagaSprzegloTextField.setText(String.valueOf(aktualnySamochod.getSprzeglo().getWaga()));
         stanSprzegloTextField.setText(String.valueOf(aktualnySamochod.getSprzeglo().isStanSprzegla()));
 
-
+        // NIE ruszamy ImageView w refresh!
         Platform.runLater(() -> {
-            carImageView.setTranslateX(aktualnySamochod.getAktualnaPozycja().getX());
-            carImageView.setTranslateX(aktualnySamochod.getAktualnaPozycja().getY());
-
+            if (aktualnySamochod.getCarImageView() != null) {
+                ImageView img = aktualnySamochod.getCarImageView();
+                img.setTranslateX(aktualnySamochod.getAktualnaPozycja().getX());
+                img.setTranslateY(aktualnySamochod.getAktualnaPozycja().getY());
+            }
         });
     }
+
+
+
+
+
     public void openAddCarWindow() throws IOException
     {
         FXMLLoader loader = new
@@ -152,18 +163,31 @@ public class HelloController implements javafx.fxml.Initializable{
     public void addCarToList(Samochod nowySamochod) {
         if (nowySamochod == null) return;
 
-        // Dodaj do listy
         flota.add(nowySamochod);
-
-        // Ustaw nowy samochód jako aktualny
         aktualnySamochod = nowySamochod;
 
-        // Odśwież ComboBox — konwertujemy ArrayList na ObservableList na potrzeby ComboBox
         samochodComboBox.getItems().setAll(flota);
         samochodComboBox.getSelectionModel().select(nowySamochod);
 
-        refresh(); // odśwież pola w UI
+        // Tworzymy ImageView dla samochodu
+        ImageView carImg = new ImageView(new Image(getClass().getResource("/wesole-auto-cars-samocho_8702.jpg").toExternalForm()));
+        carImg.setFitWidth(40);
+        carImg.setFitHeight(40);
+
+        // Dodajemy na mapę
+        mapa.getChildren().add(carImg);
+
+        // Przypisujemy do samochodu
+        nowySamochod.setCarImageView(carImg);
+
+        // Ustawiamy początkową pozycję
+        carImg.setTranslateX(nowySamochod.getAktualnaPozycja().getX());
+        carImg.setTranslateY(nowySamochod.getAktualnaPozycja().getY());
+
+        refresh();
     }
+
+
     @FXML
     private void onWlaczButton()
     {
@@ -281,22 +305,13 @@ public class HelloController implements javafx.fxml.Initializable{
         });
         samochodComboBox.getSelectionModel().clearSelection();
 
-        System.out.println("HelloController initialized");
-        Image carImage = new Image(getClass().getResource("/wesole-auto-cars-samocho_8702.jpg").toExternalForm());
-        System.out.println("Image width: " +
-                carImage.getWidth() + ", height: " + carImage.getHeight());
-        carImageView.setImage(carImage);
-        carImageView.setFitWidth(50);
-        carImageView.setFitHeight(50);
-        carImageView.setTranslateX(0);
-        carImageView.setTranslateY(0);
 
         mapa.setOnMouseClicked(event -> {
-            double x = event.getX();
-            double y = event.getY();
-            Pozycja cel = new Pozycja(x, y);
-            aktualnySamochod.jedzDo(cel);
+            if (aktualnySamochod == null) return;
+
+            aktualnySamochod.jedzDo(new Pozycja(event.getX(), event.getY()));
         });
+
 }
 }
 
